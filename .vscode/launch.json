@@ -12,7 +12,7 @@
         "protocol": "inspector",
         "port": 9229,
         "address": "localhost",
-        "restart": false,
+        "restart": true,
         "remoteRoot": "${workspaceFolder}"
     }]
 }

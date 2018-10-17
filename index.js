@@ -6,7 +6,7 @@ global.logObjDepth = function(obj, depth = 5) {
     console.log(util.inspect(obj, { depth }));
 }
 
-require('./matchParentheses');
+// require('./matchParentheses');
 
 
 // require('./binarySearch');
@@ -19,3 +19,7 @@ require('./matchParentheses');
 
 
 // require('./queue');
+
+// require('./tree');
+
+require('./heap');

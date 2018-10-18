@@ -1,6 +1,6 @@
 class Link {
-    constructor(elment = null, nextVal = null) {
-        this.elment = elment;
+    constructor(element = null, nextVal = null) {
+        this.element = element;
         this.next = nextVal;
     }
 }
@@ -33,7 +33,7 @@ class LQueue {
         if (this.empty()) {
             return null;
         }
-        let it = this.front.elment;
+        let it = this.front.element;
         this.front = this.front.next;
         if (this.size === 1) {
             this.rear = this.front;
@@ -46,7 +46,7 @@ class LQueue {
         if (this.empty()) {
             return false;
         }
-        it.v = this.front.elment;
+        it.v = this.front.element;
         this.front = this.front.next;
         if (this.size === 1) {
             this.rear = this.front;
@@ -58,14 +58,14 @@ class LQueue {
         if (this.empty()) {
             return false;
         }
-        it.v = this.front.elment;
+        it.v = this.front.element;
         return true;
     }
     frontValue() {
         if (this.empty()) {
             return null;
         }
-        return this.front.elment;
+        return this.front.element;
     }
     empty() {
         return this.size === 0;

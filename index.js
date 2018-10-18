@@ -11,7 +11,7 @@ global.logObjDepth = function(obj, depth = 5) {
 
 // require('./binarySearch');
 
-// require('./List');
+require('./List');
 
 // require('./TOH');
 
@@ -20,6 +20,6 @@ global.logObjDepth = function(obj, depth = 5) {
 
 // require('./queue');
 
-// require('./tree');
+require('./tree');
 
-require('./heap');
+// require('./heap');

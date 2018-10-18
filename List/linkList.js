@@ -1,6 +1,6 @@
 class Link {
-    constructor(elment = null, nextVal = null) {
-        this.elment = elment;
+    constructor(element = null, nextVal = null) {
+        this.element = element;
         this.next = nextVal;
     }
 }
@@ -44,6 +44,14 @@ class LinkList {
         // this.removeAll();
         this.init();
     }
+    find(e) {
+        let temp = this.head.next;
+        for (let i = 0; i < this.leftcnt + this.rightcnt; i++) {
+            if(this.equal(temp.element, e)) {
+                return i;
+            }
+        }
+    }
     insert(e) {
         // insert at the front of right partition
         this.fence.next = new Link(e, this.fence.next);
@@ -54,7 +62,8 @@ class LinkList {
         return true;
     }
     append(e) {
-        this.tail = new Link(e, this.tail.next);
+        this.tail.next = new Link(e, null);
+        this.tail = this.tail.next;
         this.rightcnt++;
         return true;
     }
@@ -63,7 +72,7 @@ class LinkList {
         if (this.equal(this.fence.next, null)) {
             return false;
         }
-        it.v = this.fence.next.elment;
+        it.v = this.fence.next.element;
         let tmp = this.fence.next;
         this.fence.next = tmp.next;
         if (this.equal(tmp, this.tail)) {
@@ -78,7 +87,7 @@ class LinkList {
         if (this.equal(this.fence.next, null)) {
             return false;
         }
-        let it = this.fence.next.elment;
+        let it = this.fence.next.element;
         let tmp = this.fence.next;
         this.fence.next = tmp.next;
         if (this.equal(tmp, this.tail)) {
@@ -90,13 +99,13 @@ class LinkList {
     }
     setStart() {
         this.fence = this.head;
-        this.leftcnt += this.rightcnt;
-        this.rightcnt = 0;
+        this.rightcnt += this.leftcnt;
+        this.leftcnt = 0;
     }
     setEnd() {
         this.fence = this.tail;
-        this.rightcnt += this.leftcnt;
-        this.leftcnt = 0;
+        this.leftcnt += this.rightcnt;
+        this.rightcnt = 0;
     }
     prev() {
         let h = this.head;
@@ -131,7 +140,7 @@ class LinkList {
         if (this.rightLength === 0) {
             return false;
         } else {
-            it.v = this.fence.next.elment;
+            it.v = this.fence.next.element;
             return true;
         }
     }
@@ -139,19 +148,19 @@ class LinkList {
         if (this.rightLength === 0) {
             return false;
         } else {
-            return this.fence.next.elment;
+            return this.fence.next.element;
         }
     }
     print() {
         let str = '<';
         let i = this.head;
         while (!this.equal(i, this.fence)) {
-            str += `${i.next.elment} `;
+            str += `${i.next.element} `;
             i = i.next;
         }
         str += `|`;
-        while (!this.equal(i.next, null)) {
-            str += `${i.next.elment} `;
+        while (i.next !== null) {
+            str += `${i.next.element} `;
             i = i.next;
         }
         str += `>`;

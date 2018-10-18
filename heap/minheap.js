@@ -30,9 +30,9 @@ const cmpHelper = {
 /**
  *
  *
- * @class maxheap
+ * @class minheap
  */
-class maxheap {
+class minheap {
     constructor(arr = [], max = defaultMax, cmp) {
         // 使用数组初始化,最多max个元素
         this.heap = [...arr].concat(new Array(max - arr.length));
@@ -46,7 +46,7 @@ class maxheap {
     }
     isLeaf(pos) {
         // true if the pos is leaf 是否是叶结点
-        return (pos >= this.n / 2) && (pos < this.n);
+        return (pos >= Math.floor(this.n / 2)) && (pos < this.n);
     }
     leftChild(pos) {
         // return left child position
@@ -60,7 +60,7 @@ class maxheap {
         return Math.floor((pos - 1) / 2);
     }
     insert(e) {
-        // 将e置于数组末尾位n，与其父结点比较，如果小于等于，那么已经处于正确的位置，否则和父结点交换位置。
+        // 将e置于数组末尾位n，与其父结点比较，如果大于等于父结点，那么已经处于正确的位置，否则和父结点交换位置。
         if (this.n >= this.max) {
             // 已满
             return false;
@@ -68,13 +68,29 @@ class maxheap {
         let cur = this.n++;
         this.heap[cur] = e;
         // 一直和父结点比较
-        while ((cur != 0) && this.cmp.gt(this.heap[cur], this.heap[this.parent(cur)])) {
+        while ((cur != 0) && this.cmp.lt(this.heap[cur], this.heap[this.parent(cur)])) {
             swap(this.heap, cur, this.parent(cur));
             cur = this.parent(cur);
         }
         return true;
     }
-    removeMax(it) {
+    findInsert(e) {
+        if (this.n >= this.max) {
+            // 判断是否大于最小值
+            if (this.cmp.gt(e, this.heap[0])) {
+                // 那么可以插入,替换最小的值
+                this.heap[0] = e;
+                this.shiftDown(0);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            // 还有空间，普通的插入
+            return this.insert(e);
+        }
+    }
+    removeMin(it) {
         // remove the max value,
         // 直接将第一个元素取出，放在最后的位置，然后n--，那么堆的大小减一。重新排堆
         if (this.n === 0) {
@@ -95,7 +111,7 @@ class maxheap {
             return false;
         }
         swap(this.heap, pos, --this.n);
-        while ((pos != 0) && (this.cmp.gt(this.heap[pos], this.heap[this.parent(pos)]))) {
+        while ((pos != 0) && (this.cmp.lt(this.heap[pos], this.heap[this.parent(pos)]))) {
             // 不断往上传递值
             swap(this.heap, pos, this.parent(pos));
         }
@@ -113,13 +129,13 @@ class maxheap {
             // stop if it is a leaf,
             let j = this.leftChild(pos);
             let r = this.rightChild(pos);
-            if ((r < this.n) && (this.cmp.lt(this.heap[j], this.heap[r]))) {
-                // 如果存在右结点，并且右结点大于左结点。
-                // 将j设置为最大的子结点位置
+            if ((r < this.n) && (this.cmp.lt(this.heap[r], this.heap[j]))) {
+                // 如果存在右结点，并且右结点小于左结点。
+                // 将j设置为最小的子结点位置
                 j = r;
             }
-            if (!this.cmp.lt(this.heap[pos], this.heap[j])) {
-                // 如果pos不小于最大的子结点，那么可以了
+            if (this.cmp.lt(this.heap[pos], this.heap[j])) {
+                // 如果pos小于最小的子结点，那么可以了
                 return;
             }
             // 否则，这个结点需要继续向下移动
@@ -140,4 +156,4 @@ function swap(arr, i, j) {
 }
 
 
-module.exports = maxheap;
+module.exports = minheap;

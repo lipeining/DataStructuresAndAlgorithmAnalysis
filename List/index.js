@@ -1,6 +1,8 @@
 const arrayBasedList = require('./arrayBasedList');
 const linkList = require('./linkList');
 const prevNextList = require('./prevNextList');
+const SortList = require('./sortList');
+
 
 function equal(a, b) {
     return _.isEqual(a, b);
@@ -56,5 +58,17 @@ describe('测试线性表', () => {
         console.log(list.remove());
         assert.equal(list.print(), '<|0 >');
         assert.equal(list.rightLength(), 1);
+    });
+});
+
+describe('测试有序链表', ()=>{
+    it('', ()=>{
+        let list = new SortList();
+        list.insert(2);
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.insert(1);
+        list.toString();
     });
 });

@@ -1,6 +1,6 @@
 class Link {
-    constructor(elment = null, nextVal = null) {
-        this.elment = elment;
+    constructor(element = null, nextVal = null) {
+        this.element = element;
         this.next = nextVal;
     }
 }
@@ -21,7 +21,7 @@ class LStack {
         if (!this.size) {
             return false;
         }
-        it.v = this.top.elment;
+        it.v = this.top.element;
         this.top = this.top.next;
         this.size--;
         return true;
@@ -30,14 +30,14 @@ class LStack {
         if (!this.size) {
             return false;
         }
-        it.v = this.top.elment;
+        it.v = this.top.element;
         return true;
     }
     pop() {
         if (!this.size) {
             return null;
         }
-        let it = this.top.elment;
+        let it = this.top.element;
         this.top = this.top.next;
         this.size--;
         return it;
@@ -46,7 +46,7 @@ class LStack {
         if (!this.size) {
             return null;
         }
-        return this.top.elment;
+        return this.top.element;
     }
     empty() {
         return this.size === 0;

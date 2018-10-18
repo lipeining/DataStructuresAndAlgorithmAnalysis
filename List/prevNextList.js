@@ -1,6 +1,6 @@
 class Link {
-    constructor(elment = null, prevVal = null, nextVal = null) {
-        this.elment = elment;
+    constructor(element = null, prevVal = null, nextVal = null) {
+        this.element = element;
         this.prev = prevVal;
         this.next = nextVal;
     }
@@ -56,7 +56,7 @@ class LinkList {
         if (this.equal(this.fence.next, null)) {
             return false;
         }
-        it.v = this.fence.next.elment;
+        it.v = this.fence.next.element;
         let tmp = this.fence.next;
         this.fence.next = tmp.next;
         // 如果是tail
@@ -74,7 +74,7 @@ class LinkList {
         if (this.equal(this.fence.next, null)) {
             return false;
         }
-        let it = this.fence.next.elment;
+        let it = this.fence.next.element;
         let tmp = this.fence.next;
         this.fence.next = tmp.next;
         // 如果是tail
@@ -127,7 +127,7 @@ class LinkList {
         if (this.rightLength === 0) {
             return false;
         } else {
-            it.v = this.fence.next.elment;
+            it.v = this.fence.next.element;
             return true;
         }
     }
@@ -135,19 +135,19 @@ class LinkList {
         if (this.rightLength === 0) {
             return false;
         } else {
-            return this.fence.next.elment;
+            return this.fence.next.element;
         }
     }
     print() {
         let str = '<';
         let i = this.head;
         while (!this.equal(i, this.fence)) {
-            str += `${i.next.elment} `;
+            str += `${i.next.element} `;
             i = i.next;
         }
         str += `|`;
         while (!this.equal(i.next, null)) {
-            str += `${i.next.elment} `;
+            str += `${i.next.element} `;
             i = i.next;
         }
         str += `>`;

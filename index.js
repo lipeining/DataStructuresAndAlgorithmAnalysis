@@ -11,7 +11,7 @@ global.logObjDepth = function(obj, depth = 5) {
 
 // require('./binarySearch');
 
-require('./List');
+// require('./List');
 
 // require('./TOH');
 

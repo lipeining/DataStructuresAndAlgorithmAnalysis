@@ -1,5 +1,3 @@
-const LinkList = require('./linkList');
-
 const cmpHelper = {
     lt: (a, b) => {
         return a < b;
@@ -12,65 +10,49 @@ const cmpHelper = {
     }
 }
 
-class Link {
-    constructor(element = null, nextVal = null) {
-        this.element = element;
-        this.next = nextVal;
-    }
-}
-
 class SortList {
     constructor(cmp = cmpHelper) {
         this.cmp = cmp;
-        this.list = new LinkList(cmp.eq);
+        this.arr = new Array();
     }
     insert(e) {
         // 插入需要保持有序
-        let p = this.list.head.next;
-        let q = this.list.head;
-        let i = 0;
-        let len = this.list.leftLength() + this.list.rightLength();
-        while (p !== null && i < len) {
-            if (this.cmp.gt(p.element, e)) {
-                // p 大于e时，插入到p的前面，也就是q的后面
+        let i;
+        for (i = 0; i < this.arr.length; i++) {
+            if (this.cmp.gt(this.arr[i], e)) {
                 break;
             }
-            p = p.next;
-            q = q.next;
-            i++;
         }
-        // 插入到i这个位置后面,也就是q的后面
-        q.next = new Link(e, q.next);
-        if (i === len) {
-            this.list.tail = q.next;
+        // insert after i
+        this.arr.splice(i, 0, e);
+        return true;
+    }
+    popHead(it) {
+        if (!this.arr.length) {
+            return false;
         }
-        if (i < this.list.leftLength()) {
-            this.list.leftcnt++;
-        } else {
-            this.list.rightcnt++;
+        let tmpArr = this.arr.splice(0, 1);
+        it.v = tmpArr[0];
+        return true;
+    }
+    popEnd(it) {
+        if (!this.arr.length) {
+            return false;
         }
-        return;
-    }
-    remove(it) {
-        return this.list.remove2(it);
-    }
-    setStart() {
-        this.list.setStart();
-    }
-    setEnd() {
-        this.list.setEnd();
+        let tmpArr = this.arr.splice(this.arr.length - 1, 1);
+        it.v = tmpArr[0];
+        return true;
     }
     find(e) {
-        this.list.find(e);
+        return this.arr.findIndex((v, i) => {
+            return this.cmp.eq(v, e);
+        });
     }
-    leftLength() {
-        return this.list.leftLength();
-    }
-    rightLength() {
-        return this.list.rightLength();
+    length() {
+        return this.arr.length;
     }
     toString() {
-        return this.list.print();
+        return this.arr.toString();
     }
 }
 

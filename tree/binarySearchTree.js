@@ -34,6 +34,8 @@ const cmpHelper = {
         return _.isEqual(a, b);
     }
 }
+
+const LStack = require('../stack/LStack');
 /**
  * 二叉查找树
  * 
@@ -51,7 +53,7 @@ class BST {
     }
     clear() {
         this.root = null;
-        this.count = 0;  
+        this.count = 0;
     }
     insert(e) {
         this.root = this.insertHelp(this.root, e);
@@ -186,6 +188,47 @@ class BST {
             return 'empty tree';
         }
         return a.toString();
+    }
+    levelOrderToString() {
+        let stack = new LStack();
+        let a = [];
+        stack.push(this.root);
+        while (!stack.empty()) {
+            let it = {};
+            stack.pop2(it);
+            let tmp = it.v;
+            // 如果是空的结点
+            if (tmp === null) {
+                continue;
+            }
+            a.push(tmp.e);
+            // 将左右结点推进栈
+            stack.push(tmp.l);
+            stack.push(tmp.r);
+        }
+        console.log(a);
+        return a.toString();
+    }
+    leafCount() {
+        return this.leafCountHelp(this.root);
+    }
+    leafCountHelp(subroot) {
+        if (subroot === null) {
+            return 0;
+        }
+        if (subroot.l === null && subroot.r === null) {
+            return 1;
+        }
+        return this.leafCountHelp(subroot.l) + this.leafCountHelp(subroot.r);
+    }
+    height() {
+        return this.heightHelp(this.root);
+    }
+    heightHelp(subroot) {
+        if (subroot === null) {
+            return 0;
+        }
+        return Math.max(this.heightHelp(subroot.l) + 1, this.heightHelp(subroot.r) + 1);
     }
 }
 

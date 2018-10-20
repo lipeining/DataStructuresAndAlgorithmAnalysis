@@ -42,7 +42,7 @@ class minheap {
         this.buildHeap();
     }
     size() {
-        return n;
+        return this.n;
     }
     isLeaf(pos) {
         // true if the pos is leaf 是否是叶结点

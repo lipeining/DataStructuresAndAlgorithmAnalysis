@@ -46,7 +46,7 @@ class maxheap {
     }
     isLeaf(pos) {
         // true if the pos is leaf 是否是叶结点
-        return (pos >= this.n / 2) && (pos < this.n);
+        return (pos >= Math.floor(this.n / 2)) && (pos < this.n);
     }
     leftChild(pos) {
         // return left child position
@@ -58,6 +58,16 @@ class maxheap {
     }
     parent(pos) {
         return Math.floor((pos - 1) / 2);
+    }
+    /**
+     *
+     *
+     * @param {*} fn (element, index, array)
+     * @memberof maxheap
+     */
+    findIndex(fn) {
+        let index = this.heap.findIndex(fn);
+        return index >= this.n ? -1 : index;
     }
     insert(e) {
         // 将e置于数组末尾位n，与其父结点比较，如果小于等于，那么已经处于正确的位置，否则和父结点交换位置。
@@ -72,6 +82,13 @@ class maxheap {
             swap(this.heap, cur, this.parent(cur));
             cur = this.parent(cur);
         }
+        return true;
+    }
+    getMax(it) {
+        if (this.n === 0) {
+            return false;
+        }
+        it.v = this.heap[0];
         return true;
     }
     removeMax(it) {

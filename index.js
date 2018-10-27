@@ -20,6 +20,9 @@ global.logObjDepth = function(obj, depth = 5) {
 
 // require('./queue');
 
-require('./tree');
+// require('./tree');
 
 // require('./heap');
+
+
+require('./priorityQueue');

@@ -137,7 +137,7 @@ class LinkList {
         return true;
     }
     getValue2(it) {
-        if (this.rightLength === 0) {
+        if (this.rightLength() === 0) {
             return false;
         } else {
             it.v = this.fence.next.element;
@@ -145,7 +145,7 @@ class LinkList {
         }
     }
     getValue() {
-        if (this.rightLength === 0) {
+        if (this.rightLength() === 0) {
             return false;
         } else {
             return this.fence.next.element;

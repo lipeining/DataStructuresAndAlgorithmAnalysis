@@ -1,6 +1,6 @@
 const util = require('util');
 global._ = require('lodash');
-global.assert = require('assert');
+global.assert = require('power-assert');
 
 global.logObjDepth = function(obj, depth = 5) {
     console.log(util.inspect(obj, { depth }));
@@ -31,4 +31,6 @@ global.logObjDepth = function(obj, depth = 5) {
 // require('./GenTree');
 
 
-require('./Sort');
+// require('./Sort');
+
+require('./leetcode');

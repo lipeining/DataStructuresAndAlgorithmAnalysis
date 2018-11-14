@@ -233,3 +233,51 @@ class BST {
 }
 
 module.exports = BST;
+
+// /**
+//  * Definition for a binary tree node.
+//  * function TreeNode(val) {
+//  *     this.val = val;
+//  *     this.left = this.right = null;
+//  * }
+//  */
+// /**
+//  * @param {TreeNode} root
+//  * @return {number[]}
+//  */
+// var inorderTraversal = function(root) {
+    
+//     let s = new Array();
+//     let res = new Array();
+//     if(root === null) {
+//         return [];
+//     }
+//     else {
+//                 // 需要不断更新root
+//         while(root || s.length) {
+//             while(root) {
+//                 s.push(root);
+//                 root = root.left;
+//             }
+//             root = s.pop();
+//             res.push(root.val);
+//             root = root.right;
+//         }    
+//         return res;
+//     }
+//     //     Set<Node> visited;
+// //     Stack<Node> s;
+// //     add root to s;
+// //     while (s is not empty) {
+// //         Node cur = the top element in s;
+// //         return true if cur is target;
+// //         for (Node next : the neighbors of cur) {
+// //             if (next is not in visited) {
+// //                 add next to s;
+// //                 add next to visited;
+// //             }
+// //         }
+// //         remove cur from s;
+// //     }
+// //     return false;
+// };

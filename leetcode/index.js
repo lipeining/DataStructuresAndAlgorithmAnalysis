@@ -11,6 +11,7 @@ require('./decodeString');
 require('./floodFill');
 require('./zeroOneMatrix');
 require('./canVisitAllRooms');
+require('./ArrayAlo');
 
 
 // /*

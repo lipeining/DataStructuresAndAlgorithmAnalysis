@@ -1,17 +1,18 @@
 
 
 
-require('./numIsIands');
-require('./openLock');
-require('./numSquares');
-require('./MinStack');
-require('./evalPRN');
-require('./findTargetSumWays');
-require('./decodeString');
-require('./floodFill');
-require('./zeroOneMatrix');
-require('./canVisitAllRooms');
+require('./StackQueueAlo/numIsIands');
+require('./StackQueueAlo/openLock');
+require('./StackQueueAlo/numSquares');
+require('./StackQueueAlo/MinStack');
+require('./StackQueueAlo/evalPRN');
+require('./StackQueueAlo/findTargetSumWays');
+require('./StackQueueAlo/decodeString');
+require('./StackQueueAlo/floodFill');
+require('./StackQueueAlo/zeroOneMatrix');
+require('./StackQueueAlo/canVisitAllRooms');
 require('./ArrayAlo');
+require('./SetAlo');
 
 
 // /*

@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha ./index.js --bail",
-        "test-debug": "mocha --inspect-brk --inspect ./index.js --bail",
-        "test-debug-rs": "nodemon --exec \" mocha --inspect-brk --inspect ./index.js --bail \""
+        "test": "mocha --require intelli-espower-loader ./index.js --bail",
+        "test-debug": "mocha --require intelli-espower-loader --inspect-brk --inspect ./index.js --bail",
+        "test-debug-rs": "nodemon --exec \" mocha --require intelli-espower-loader --inspect-brk --inspect ./index.js --bail \""
     },
     "author": "",
     "license": "ISC",
@@ -14,5 +14,8 @@
         "lodash": "^4.17.11",
         "mocha": "^5.2.0",
         "power-assert": "^1.6.1"
+    },
+    "devDependencies": {
+        "intelli-espower-loader": "^1.0.1"
     }
 }

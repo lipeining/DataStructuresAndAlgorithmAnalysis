@@ -56,22 +56,22 @@ class ExSort {
     // 第i次执行时，前i个一定是已经排序的了
     bubsort(arr) {
         // 这里将小的往数组头部冒泡
-        // for (let i = 0; i < arr.length - 1; i++) {
-        //     for (let j = arr.length - 1; j > 1 + i; j--) {
-        //         if (this.cmp.lt(arr[j], arr[j - 1])) {
-        //             swap(arr, j, j - 1);
-        //         }
-        //     }
-        // }
-
-        // 这里将大的往数组尾部冒泡
         for (let i = 0; i < arr.length - 1; i++) {
-            for (let j = 0; j < arr.length - 1 - i; j++) {
-                if (this.cmp.gt(arr[j], arr[j + 1])) {
-                    swap(arr, j, j + 1);
+            for (let j = arr.length - 1; j >= 1 + i; j--) {
+                if (this.cmp.lt(arr[j], arr[j - 1])) {
+                    swap(arr, j, j - 1);
                 }
             }
         }
+
+        // 这里将大的往数组尾部冒泡
+        // for (let i = 0; i < arr.length - 1; i++) {
+        //     for (let j = 0; j < arr.length - 1 - i; j++) {
+        //         if (this.cmp.gt(arr[j], arr[j + 1])) {
+        //             swap(arr, j, j + 1);
+        //         }
+        //     }
+        // }
     }
     // 选择排序，第i次选择第i小的记录，放在数组的第i个位置
     selsort(arr) {
@@ -327,7 +327,7 @@ function merge(left, right) {
 
 
 const data = [
-    [1, 3, 7, 5, 6, 9, 5, 10, 3, 5, 6, 1]
+    [2, 3, 7, 5, 6, 9, 5, 10, 3, 5, 6, 1]
 ];
 describe('测试交换排序', () => {
     it('bubsort', () => {
@@ -395,7 +395,7 @@ describe('测试交换排序', () => {
         let arr = [27, 91, 1, 97, 17, 23, 84, 28, 72, 5, 67, 25];
         let B = new Array(12);
         let cnt = new Array(10);
-        exSort.radix(arr,B, B.length, 2, 10, cnt);
+        exSort.radix(arr, B, B.length, 2, 10, cnt);
         console.log(arr);
     });
 });

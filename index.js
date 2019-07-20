@@ -31,8 +31,8 @@ global.logObjDepth = function(obj, depth = 5) {
 // require('./GenTree');
 
 
-// require('./Sort');
+require('./Sort');
 
 // require('./leetcode');
 
-require('./Graph');
+// require('./Graph');
